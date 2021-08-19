@@ -3,9 +3,11 @@ import 'package:flutter_ui/utils/Constants.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
+  final GlobalKey<ScaffoldState> globalKey;
 
   CustomAppBar({
     this.height = kToolbarHeight,
+    required this.globalKey
   });
 
   @override
@@ -16,7 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 5,
       leading: IconButton(
-        onPressed: () => null,
+        onPressed: () => globalKey.currentState!.openDrawer(),
         icon: Icon(Icons.menu),
       ),
       centerTitle: true,
