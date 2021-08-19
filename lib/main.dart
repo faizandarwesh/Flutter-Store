@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/auth/ui/LandingScreen.dart';
+import 'package:flutter_ui/auth/ui/LoginScreen.dart';
 import 'package:flutter_ui/products/ui/ProductsScreen.dart';
 
 void main() {
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ProductScreen(),
+      home: LandingScreen(),
     );
   }
 }
