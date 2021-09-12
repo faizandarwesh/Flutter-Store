@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/products/ui/GroceriesScreen.dart';
+import 'package:flutter_ui/products/ui/ProductsScreen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatelessWidget {
-
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -102,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () => Navigator.push(
                         context,
                         CupertinoPageRoute(
-                            builder: (context) => LoginScreen()))),
+                            builder: (context) => GroceriesScreen()))),
               ),
             ),
             SizedBox(
@@ -113,7 +115,8 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Expanded(
                     child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         child: Divider(
                           color: Colors.black,
                           height: 16,
@@ -124,14 +127,17 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Expanded(
                     child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         child: Divider(
                           color: Colors.black,
                           height: 16,
                         ))),
               ],
             ),
-            SizedBox(height: 8,),
+            SizedBox(
+              height: 8,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
               child: Container(
@@ -140,52 +146,61 @@ class LoginScreen extends StatelessWidget {
                 child: ElevatedButton.icon(
                   label: Text("Sign In with Google".toUpperCase(),
                       style: TextStyle(fontSize: 18)),
-                  icon: Icon(Icons.shopping_cart,color: Colors.white,),
+                  icon: Image.asset(
+                    "assets/images/google-logo.png",
+                    width: 30,
+                    height: 30,
+                  ),
                   style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(8.0),
                       foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
+                          MaterialStateProperty.all<Color>(Colors.black),
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.redAccent),
-                      shape:
-                      MaterialStateProperty.all<RoundedRectangleBorder>(
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32.0),
-                              side:
-                              BorderSide(color: Colors.redAccent)))),
-                  onPressed: () => Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => LoginScreen())),),
+                              side: BorderSide(color: Colors.white)))),
+                  onPressed: () async{
+                   final response = await GoogleSignIn().signIn();
+                  },
+                ),
               ),
             ),
-            SizedBox(height: 8,),
+            SizedBox(
+              height: 8,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
               child: Container(
                 width: double.infinity,
                 height: 60,
                 child: ElevatedButton.icon(
-                    label: Text("Sign In with Facebook".toUpperCase(),
-                        style: TextStyle(fontSize: 18)),
-                    icon: Icon(Icons.shopping_cart,color: Colors.white,),
-                    style: ButtonStyle(
-                        foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                        backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.blueAccent),
-                        shape:
-                        MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(32.0),
-                                side:
-                                BorderSide(color: Colors.blueAccent)))),
-                    onPressed: () => Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => LoginScreen())),),
+                  label: Text("Sign In with Facebook".toUpperCase(),
+                      style: TextStyle(fontSize: 18)),
+                  icon: Image.asset(
+                    "assets/images/fb-logo.png",
+                    width: 30,
+                    height: 30,
+                  ),
+                  style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(8.0),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.blueAccent),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32.0),
+                              side: BorderSide(color: Colors.blueAccent)))),
+                  onPressed: () => Navigator.push(context,
+                      CupertinoPageRoute(builder: (context) => LoginScreen())),
+                ),
               ),
             ),
-            SizedBox(height: 8,)
+            SizedBox(
+              height: 16,
+            )
           ],
         ),
       )),

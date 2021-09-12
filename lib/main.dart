@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/auth/ui/LandingScreen.dart';
-import 'package:flutter_ui/auth/ui/LoginScreen.dart';
-import 'package:flutter_ui/products/ui/ProductsScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
