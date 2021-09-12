@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,13 +41,15 @@ class DialogHelper {
       Dialog(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircularProgressIndicator(),
-              SizedBox(height: 8),
-              Text(message ?? 'Loading...'),
-            ],
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CupertinoActivityIndicator(),
+                SizedBox(height: 8),
+                Text(message ?? 'Loading...'),
+              ],
+            ),
           ),
         ),
       ),
