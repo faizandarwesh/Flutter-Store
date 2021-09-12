@@ -6,5 +6,6 @@ class Constants{
   static const FAILURE_MESSAGE = "Something went wrong";
   static const APP_TITLE = "Flutter Store";
   static const int TIME_OUT_DURATION = 20;
+  static const PRODUCTS_COLLECTION = "Product";
 
 }
